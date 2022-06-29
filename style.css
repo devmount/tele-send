@@ -1,0 +1,27 @@
+:root {
+	font-family: var(--sl-font-sans);
+	font-size: var(--sl-font-size-medium);
+	font-weight: var(--sl-font-weight-normal);
+	letter-spacing: var(--sl-letter-spacing-normal);
+	background-color: var(--sl-color-neutral-0);
+	color: var(--sl-color-neutral-900);
+	line-height: var(--sl-line-height-normal);
+}
+
+header {
+	text-align: center;
+}
+
+header,
+main {
+	max-width: 720px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+
+sl-alert,
+sl-textarea {
+	margin: 10px 0;
+}

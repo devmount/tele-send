@@ -1,0 +1,20 @@
+{
+    "name": "devmount/tele-send",
+    "description": "Web app to send form data to a Telegram bot",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^5.4.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Devmount\\TeleSend\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andreas Müller",
+            "email": "mail@devmount.de"
+        }
+    ]
+}
