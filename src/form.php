@@ -75,23 +75,31 @@ if (!empty($_POST)) {
 				<sl-icon slot="icon" name="check2-circle"></sl-icon>
 				<strong>Dein Feedback wurde gesendet</strong><br />
 				Vielen Dank für deine Zeit!
+				<sl-button href="/" class="d-block w-fit-content mt-1" variant="default" outline>
+					<sl-icon slot="suffix" name="arrow-counterclockwise"></sl-icon>
+					Nochmal starten
+				</sl-button>
 			</sl-alert>
-		<?php endif; ?>
-		<?php if (isset($_GET['show']) && $_GET['show'] == 'error'): ?>
+		<?php elseif (isset($_GET['show']) && $_GET['show'] == 'error'): ?>
 			<sl-alert variant="danger" open>
 				<sl-icon slot="icon" name="exclamation-octagon"></sl-icon>
 				<strong>Es gab einen Fehler</strong><br />
 				Bitte entschuldige, dein Feedback konnte nicht gesendet werden.
+				<sl-button href="/" class="d-block w-fit-content mt-1" variant="default" outline>
+					<sl-icon slot="suffix" name="arrow-counterclockwise"></sl-icon>
+					Nochmal probieren
+				</sl-button>
 			</sl-alert>
+		<?php else: ?>
+			<form action="" method="post">
+				Wie bewertest du die Community Week 2022 insgesamt?<br />
+				<sl-rating style="--symbol-size: 2rem;" precision="0.5"></sl-rating>
+				<input type="hidden" name="rating" id="rating" />
+				<sl-textarea name="highlight" label="Das sollte unbedingt so bleiben" maxlength="1000" required></sl-textarea>
+				<sl-textarea name="challenge" label="Das sollte nächstes Mal besser laufen" maxlength="1000" required></sl-textarea>
+				<sl-button type="submit" variant="primary">Ab damit!</sl-button>
+			</form>
 		<?php endif; ?>
-		<form action="" method="post">
-			Wie bewertest du die Community Week 2022 insgesamt?<br />
-			<sl-rating style="--symbol-size: 2rem;" precision="0.5"></sl-rating>
-			<input type="hidden" name="rating" id="rating" />
-			<sl-textarea name="highlight" label="Das sollte unbedingt so bleiben" maxlength="1000" required></sl-textarea>
-			<sl-textarea name="challenge" label="Das sollte nächstes Mal besser laufen" maxlength="1000" required></sl-textarea>
-			<sl-button type="submit" variant="primary">Ab damit!</sl-button>
-		</form>
 	</main>
 	<script>
 		// send rating when submitting form via hidden input

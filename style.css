@@ -25,3 +25,14 @@ sl-alert,
 sl-textarea {
 	margin: 10px 0;
 }
+
+/* utilities */
+.d-block {
+	display: block;
+}
+.mt-1 {
+	margin-top: 1rem;
+}
+.w-fit-content {
+	width: fit-content;
+}
