@@ -1,10 +1,13 @@
 <?php
 namespace Devmount\TeleSend;
 
+// get environment variables
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 // config
-$token = '5418606350:AAFTyUOQDyI4V_uI8oW1ciaHEfkxALKLp2I'; // telegram bot token
-// $chat  = '-667695041';                                     // test elegram chat id to post to
-$chat  = '-1001470173845';                                 // telegram chat id to post to
+$token = $_ENV['TOKEN']; // telegram bot token
+$chat  = $_ENV['CHAT'];  // telegram chat id to post to
 $url   = 'https://api.telegram.org/bot' . $token . '/sendMessage';
 
 // handle form data
