@@ -2,7 +2,7 @@
 namespace Devmount\TeleSend;
 
 // get environment variables
-$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = \Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
 // config
@@ -31,12 +31,14 @@ if (!empty($_POST)) {
 	curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 
 	$result = curl_exec($ch);
-	$result = json_decode($result);
-	if ($result->ok) {
+	$resobj = json_decode($result);
+	if (is_object($resobj) && $resobj->ok) {
 		// reload to prevent resubmission
 		header ('Location: ' . $_SERVER['REQUEST_URI'] . '?show=success');
     exit();
-	};
+	} else {
+		header ('Location: ' . $_SERVER['REQUEST_URI'] . '?show=error');
+	}
 }
 
 ?>
@@ -73,6 +75,13 @@ if (!empty($_POST)) {
 				<sl-icon slot="icon" name="check2-circle"></sl-icon>
 				<strong>Dein Feedback wurde gesendet</strong><br />
 				Vielen Dank für deine Zeit!
+			</sl-alert>
+		<?php endif; ?>
+		<?php if (isset($_GET['show']) && $_GET['show'] == 'error'): ?>
+			<sl-alert variant="danger" open>
+				<sl-icon slot="icon" name="exclamation-octagon"></sl-icon>
+				<strong>Es gab einen Fehler</strong><br />
+				Bitte entschuldige, dein Feedback konnte nicht gesendet werden.
 			</sl-alert>
 		<?php endif; ?>
 		<form action="" method="post">
