@@ -1,6 +1,6 @@
 {
     "name": "devmount/tele-send",
-    "description": "Web app to send form data to a Telegram bot",
+    "description": "Web app to send form data as message by a Telegram bot",
     "type": "project",
     "require": {
         "vlucas/phpdotenv": "^5.4.1"
