@@ -17,18 +17,18 @@
 	/>
 	<link rel="stylesheet" href="style.css" />
 	<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.76/dist/shoelace.js"></script>
-	<title>Feedback</title>
+	<title><?= $this->title ?> - <?= $this->subtitle ?></title>
 </head>
 <body>
 	<header>
-		<h1>Feedback</h1>
-		<h2>Community Week 2022</h2>
+		<h1><?= $this->title ?></h1>
+		<h2><?= $this->subtitle ?></h2>
 	</header>
 	<main>
 		<?php if (isset($_GET['show']) && $_GET['show'] == 'success'): ?>
 			<sl-alert variant="success" open>
 				<sl-icon slot="icon" name="check2-circle"></sl-icon>
-				<strong>Dein Feedback wurde gesendet</strong><br />
+				<strong>Dein Input wurde gesendet</strong><br />
 				Vielen Dank für deine Zeit!
 				<sl-button href="/" class="d-block w-fit-content mt-1" variant="default" outline>
 					<sl-icon slot="suffix" name="arrow-counterclockwise"></sl-icon>
@@ -39,7 +39,7 @@
 			<sl-alert variant="danger" open>
 				<sl-icon slot="icon" name="exclamation-octagon"></sl-icon>
 				<strong>Es gab einen Fehler</strong><br />
-				Bitte entschuldige, dein Feedback konnte nicht gesendet werden.
+				Bitte entschuldige, dein Input konnte nicht gesendet werden.
 				<sl-button href="/" class="d-block w-fit-content mt-1" variant="default" outline>
 					<sl-icon slot="suffix" name="arrow-counterclockwise"></sl-icon>
 					Nochmal probieren
@@ -47,21 +47,10 @@
 			</sl-alert>
 		<?php else: ?>
 			<form action="" method="post">
-				Wie bewertest du die Community Week 2022 insgesamt?<br />
-				<sl-rating style="--symbol-size: 2rem;" precision="0.5"></sl-rating>
-				<input type="hidden" name="rating" id="rating" />
-				<sl-textarea name="highlight" label="Das sollte unbedingt so bleiben" maxlength="1000" required></sl-textarea>
-				<sl-textarea name="challenge" label="Das sollte nächstes Mal besser laufen" maxlength="1000" required></sl-textarea>
+				<?= $fieldMarkup ?>
 				<sl-button type="submit" variant="primary">Ab damit!</sl-button>
 			</form>
 		<?php endif; ?>
 	</main>
-	<script>
-		// send rating when submitting form via hidden input
-		const rating = document.querySelector('sl-rating');
-		rating.addEventListener('sl-change', event => {
-			document.querySelector('#rating').value = event.target.value;
-		});
-	</script>
 </body>
 </html>

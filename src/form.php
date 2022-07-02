@@ -6,45 +6,71 @@ class TeleForm
 	protected
 		$token = '',
 		$chat = '',
-		$url = '';
+		$url = '',
+		$title = '',
+		$subtitle = '',
+		$fields = [];
 
-	public function __construct($token, $chat, $url)
+	public function __construct($token, $chat, $url, $title, $subtitle, $fields)
 	{
 		$this->token = $token;
 		$this->chat = $chat;
 		$this->url = $url;
+		$this->title = $title;
+		$this->subtitle = $subtitle;
+		$this->fields = $fields;
 	}
 
 	public function render()
 	{
 		// handle form data
 		if (!empty($_POST)) {
-			$rating = $_POST['rating'];
-			$highlight = $_POST['highlight'];
-			$challenge = $_POST['challenge'];
-			
 			$fields = [
 				'chat_id'    => $chat,
-				'text'       => '<b>Bewertung: </b> ' . $rating . "\n<b>Beibehalten: </b>" . $highlight .  "\n<b>Verbessern: </b>" . $challenge,
+				'text'       => implode("\n", array_map(function($i) { return '<b>' . $i['title'] . ': </b> ' . $_POST[$i['id']]; }, $this->fields)),
 				'parse_mode' => 'html',
 			];
 
 			// send data via curl
 			$postdata = http_build_query($fields);
 			$ch = curl_init();
-			curl_setopt($ch,CURLOPT_URL, $url);
-			curl_setopt($ch,CURLOPT_POST, true);
-			curl_setopt($ch,CURLOPT_POSTFIELDS, $postdata);
-			curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_POST, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			$result = json_decode(curl_exec($ch));
 
-			$result = curl_exec($ch);
-			$resobj = json_decode($result);
-			if (is_object($resobj) && $resobj->ok) {
+			if (is_object($result) && $result->ok) {
 				// reload to prevent resubmission
 				header ('Location: ' . $_SERVER['REQUEST_URI'] . '?show=success');
 				exit();
 			} else {
 				header ('Location: ' . $_SERVER['REQUEST_URI'] . '?show=error');
+			}
+		}
+
+		// generate input field markup
+		$fieldMarkup = '';
+		foreach ($this->fields as $f) {
+			switch ($f['type']) {
+				case 'rating':
+					$fieldMarkup .=
+						$f['label'] . '<br />'
+						. '<sl-rating id="' . $f['id'] . '" style="--symbol-size: 2rem;" precision="0.5"></sl-rating>'
+						. '<input type="hidden" name="' . $f['id'] . '" />'
+						. '<script>
+								document.querySelector(#' . $f['id'] . ').addEventListener("sl-change", event => {
+									document.querySelector("input[name="' . $f['id'] . '"]").value = event.target.value;
+								});
+							</script>';
+					break;
+				case 'textarea':
+					$fieldMarkup .=
+						'<sl-textarea name="' . $f['id'] . '" label="' . $f['label'] . '" maxlength="1000" required></sl-textarea>';
+					break;
+				default:
+					# code...
+					break;
 			}
 		}
 

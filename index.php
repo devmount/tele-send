@@ -12,7 +12,8 @@ $dotenv->load();
 $token = $_ENV['TOKEN']; // telegram bot token
 $chat  = $_ENV['CHAT'];  // telegram chat id to post to
 $url   = 'https://api.telegram.org/bot' . $token . '/sendMessage';
+$conf  = json_decode(file_get_contents('config.json'), true);
 
 // init form and render it
-$ts = new TeleForm($token, $chat, $url);
+$ts = new TeleForm($token, $chat, $url, $conf['title'], $conf['subtitle'], $conf['fields']);
 $ts->render();

@@ -1,0 +1,24 @@
+{
+	"title": "Feedback",
+	"subtitle": "Community Week 2022",
+	"fields": [
+		{
+			"id": "general",
+			"type": "rating",
+			"title": "Bewertung",
+			"label": "Wie bewertest du die Community Week 2022 insgesamt?"
+		},
+		{
+			"id": "highlight",
+			"type": "textarea",
+			"title": "Beibehalten",
+			"label": "Das sollte unbedingt so bleiben"
+		},
+		{
+			"id": "challenge",
+			"type": "textarea",
+			"title": "Verbessern",
+			"label": "Das sollte nächstes Mal besser laufen"
+		}
+	]
+}
