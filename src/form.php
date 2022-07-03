@@ -1,6 +1,8 @@
 <?php
 namespace Devmount\TeleSend;
 
+require_once 'elements.php';
+
 class TeleForm
 {
 	protected
@@ -11,10 +13,17 @@ class TeleForm
 
 	public function __construct($token, $chat, $url, $conf)
 	{
+		// init attributes
 		$this->token = $token;
 		$this->chat = $chat;
 		$this->url = $url;
 		$this->conf = $conf;
+		// create field ids
+		foreach ($this->conf['fields'] as $i => $f) {
+			$f['id'] = 'f' . $i;
+			$this->conf['fields'][$i] = $f;
+		}
+		
 	}
 
 	public function render()
@@ -23,7 +32,7 @@ class TeleForm
 		if (!empty($_POST)) {
 			$fields = [
 				'chat_id'    => $chat,
-				'text'       => implode("\n", array_map(function($i) { return '<b>' . $i['title'] . ': </b> ' . $_POST[$i['id']]; }, $this->conf['fields'])),
+				'text'       => implode("\n", array_map(fn($i) => '<b>' . $i['title'] . ': </b> ' . $_POST[$i['id']], $this->conf['fields'])),
 				'parse_mode' => 'html',
 			];
 
@@ -50,26 +59,14 @@ class TeleForm
 		foreach ($this->conf['fields'] as $f) {
 			switch ($f['type']) {
 				case 'rating':
-					$fieldMarkup .=
-						$f['label'] . '<br />'
-						. '<sl-rating id="' . $f['id'] . '" style="--symbol-size: 2rem;" precision="0.5"></sl-rating>'
-						. '<input type="hidden" name="' . $f['id'] . '" />'
-						. '<script>
-								document.querySelector(#' . $f['id'] . ').addEventListener("sl-change", event => {
-									document.querySelector("input[name="' . $f['id'] . '"]").value = event.target.value;
-								});
-							</script>';
+					$fieldMarkup .= TeleFormElements::rating($f);
 					break;
 				case 'textarea':
-					$fieldMarkup .=
-						'<sl-textarea name="' . $f['id'] . '" label="' . $f['label'] . '" maxlength="1000"></sl-textarea>';
+					$fieldMarkup .= TeleFormElements::textarea($f);
 					break;
 				case 'text':
-					$fieldMarkup .=
-						'<sl-input name="' . $f['id'] . '" label="' . $f['label'] . '"></sl-input>';
-					break;
 				default:
-					# code...
+					$fieldMarkup .= TeleFormElements::text($f);
 					break;
 			}
 		}

@@ -48,7 +48,7 @@
 		<?php else: ?>
 			<form action="" method="post">
 				<?= $fieldMarkup ?>
-				<sl-button type="submit" variant="primary"><?= $this->conf['submit'] ?></sl-button>
+				<sl-button type="submit" variant="primary" class="mt-1"><?= $this->conf['submit'] ?></sl-button>
 			</form>
 		<?php endif; ?>
 	</main>

@@ -7,28 +7,33 @@
 	"submit": "Submit",
 	// all needed form fields
 	// supported types are: rating, text, textarea (see following examples)
-	// at least id, type and title is needed for every field
+	// type and title are mandatory for every field
 	"fields": [
 		// rating with multiple stars
 		{
-			"id": "general",
-			"type": "rating",
-			"title": "Overall Satisfaction",
-			"label": "How satisfied are you?"
+			"type": "rating",                  // input type, mandatory
+			"title": "Overall Satisfaction",   // field title, shown in Telegram message result, mandatory
+			"label": "How satisfied are you?", // field lable, shown on the web form
+			"precision": 0.5,                  // let users select fractional ratings
+			"max": 5,                          // max rating value, number of stars
+			"required": false                  // indicate required input
 		},
 		// single line text input
 		{
-			"id": "improve",
-			"type": "text",
-			"title": "To improve",
-			"label": "This should be better"
+			"type": "text",                    // input type, mandatory
+			"title": "To improve",             // field title, shown in Telegram message result, mandatory
+			"label": "This should be better",  // field lable, shown on the web form
+			"placeholder": "Something bad",    // field placeholder
+			"required": false                  // indicate required text input
 		},
 		// multi line text input
 		{
-			"id": "keep",
-			"type": "textarea",
-			"title": "To keep",
-			"label": "This is awesome"
+			"type": "textarea",                // input type, mandatory
+			"title": "To keep",                // field title, shown in Telegram message result, mandatory
+			"label": "This is awesome",        // field lable, shown on the web form
+			"placeholder": "Something good",   // field placeholder
+			"maxlength": 1000,                 // maximum length of valid input
+			"required": false                  // indicate required text input
 		}
 	]
 }
