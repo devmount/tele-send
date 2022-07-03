@@ -1,24 +1,32 @@
 {
+	// h1 page title on top of the page
 	"title": "Title",
+	// h2 subtitle below h1
 	"subtitle": "Subtitle",
+	// all needed form fields
+	// supported types are: rating, text, textarea (see following examples)
+	// at least id, type and title is needed for every field
 	"fields": [
+		// rating with multiple stars
 		{
 			"id": "general",
 			"type": "rating",
 			"title": "Overall Satisfaction",
-			"label": "How satisfied are you with the product?"
+			"label": "How satisfied are you?"
 		},
-		{
-			"id": "keep",
-			"type": "textarea",
-			"title": "To keep",
-			"label": "This is awesome"
-		},
+		// single line text input
 		{
 			"id": "improve",
 			"type": "text",
 			"title": "To improve",
 			"label": "This should be better"
+		},
+		// multi line text input
+		{
+			"id": "keep",
+			"type": "textarea",
+			"title": "To keep",
+			"label": "This is awesome"
 		}
 	]
 }
