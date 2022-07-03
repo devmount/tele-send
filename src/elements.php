@@ -14,9 +14,10 @@ class TeleFormElements
 		$prc = $conf['precision'] ? $conf['precision'] : 0.5;
 		$max = $conf['max'] ? $conf['max'] : 5;
 		$req = $conf['required'] ? 'required' : '';
+		$ind = $conf['required'] ? '*' : '';
 		// provide HTML markup
 		return <<<HTML
-			{$lbl}<br />
+			{$lbl} {$ind}<br />
 			<sl-rating
 				id="{$id}"
 				style="--symbol-size: 2rem;"

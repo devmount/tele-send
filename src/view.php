@@ -7,16 +7,16 @@
 	<link
 		rel="stylesheet"
 		media="(prefers-color-scheme:light)"
-		href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.76/dist/themes/light.css"
+		href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.77/dist/themes/light.css"
 	/>
 	<link
 		rel="stylesheet"
 		media="(prefers-color-scheme:dark)"
-		href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.76/dist/themes/dark.css"
+		href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.77/dist/themes/dark.css"
 		onload="document.documentElement.classList.add('sl-theme-dark');"
 	/>
 	<link rel="stylesheet" href="style.css" />
-	<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.76/dist/shoelace.js"></script>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.77/dist/shoelace.js"></script>
 	<title><?= $this->conf['title'] ?> - <?= $this->conf['subtitle'] ?></title>
 </head>
 <body>
