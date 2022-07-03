@@ -66,7 +66,11 @@ class TeleForm
 					break;
 				case 'textarea':
 					$fieldMarkup .=
-						'<sl-textarea name="' . $f['id'] . '" label="' . $f['label'] . '" maxlength="1000" required></sl-textarea>';
+						'<sl-textarea name="' . $f['id'] . '" label="' . $f['label'] . '" maxlength="1000"></sl-textarea>';
+					break;
+				case 'text':
+					$fieldMarkup .=
+						'<sl-input name="' . $f['id'] . '" label="' . $f['label'] . '"></sl-input>';
 					break;
 				default:
 					# code...
