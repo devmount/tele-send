@@ -1,0 +1,24 @@
+{
+	"title": "Title",
+	"subtitle": "Subtitle",
+	"fields": [
+		{
+			"id": "general",
+			"type": "rating",
+			"title": "Overall Satisfaction",
+			"label": "How satisfied are you with the product?"
+		},
+		{
+			"id": "keep",
+			"type": "textarea",
+			"title": "To keep",
+			"label": "This is awesome"
+		},
+		{
+			"id": "improve",
+			"type": "text",
+			"title": "To improve",
+			"label": "This should be better"
+		}
+	]
+}
