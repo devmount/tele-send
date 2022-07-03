@@ -7,18 +7,14 @@ class TeleForm
 		$token = '',
 		$chat = '',
 		$url = '',
-		$title = '',
-		$subtitle = '',
-		$fields = [];
+		$conf = null;
 
-	public function __construct($token, $chat, $url, $title, $subtitle, $fields)
+	public function __construct($token, $chat, $url, $conf)
 	{
 		$this->token = $token;
 		$this->chat = $chat;
 		$this->url = $url;
-		$this->title = $title;
-		$this->subtitle = $subtitle;
-		$this->fields = $fields;
+		$this->conf = $conf;
 	}
 
 	public function render()
@@ -27,7 +23,7 @@ class TeleForm
 		if (!empty($_POST)) {
 			$fields = [
 				'chat_id'    => $chat,
-				'text'       => implode("\n", array_map(function($i) { return '<b>' . $i['title'] . ': </b> ' . $_POST[$i['id']]; }, $this->fields)),
+				'text'       => implode("\n", array_map(function($i) { return '<b>' . $i['title'] . ': </b> ' . $_POST[$i['id']]; }, $this->conf['fields'])),
 				'parse_mode' => 'html',
 			];
 
@@ -51,7 +47,7 @@ class TeleForm
 
 		// generate input field markup
 		$fieldMarkup = '';
-		foreach ($this->fields as $f) {
+		foreach ($this->conf['fields'] as $f) {
 			switch ($f['type']) {
 				case 'rating':
 					$fieldMarkup .=

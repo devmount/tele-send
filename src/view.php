@@ -17,12 +17,12 @@
 	/>
 	<link rel="stylesheet" href="style.css" />
 	<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.76/dist/shoelace.js"></script>
-	<title><?= $this->title ?> - <?= $this->subtitle ?></title>
+	<title><?= $this->conf['title'] ?> - <?= $this->conf['subtitle'] ?></title>
 </head>
 <body>
 	<header>
-		<h1><?= $this->title ?></h1>
-		<h2><?= $this->subtitle ?></h2>
+		<h1><?= $this->conf['title'] ?></h1>
+		<h2><?= $this->conf['subtitle'] ?></h2>
 	</header>
 	<main>
 		<?php if (isset($_GET['show']) && $_GET['show'] == 'success'): ?>
@@ -48,7 +48,7 @@
 		<?php else: ?>
 			<form action="" method="post">
 				<?= $fieldMarkup ?>
-				<sl-button type="submit" variant="primary">Ab damit!</sl-button>
+				<sl-button type="submit" variant="primary"><?= $this->conf['submit'] ?></sl-button>
 			</form>
 		<?php endif; ?>
 	</main>

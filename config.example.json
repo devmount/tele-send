@@ -3,6 +3,8 @@
 	"title": "Title",
 	// h2 subtitle below h1
 	"subtitle": "Subtitle",
+	// label for the submit button
+	"submit": "Submit",
 	// all needed form fields
 	// supported types are: rating, text, textarea (see following examples)
 	// at least id, type and title is needed for every field
