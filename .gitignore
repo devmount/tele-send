@@ -4,4 +4,4 @@ composer.phar
 
 # environment
 .env
-config.json
+config.yml

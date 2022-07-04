@@ -3,7 +3,8 @@
     "description": "Web app to send form data as message by a Telegram bot",
     "type": "project",
     "require": {
-        "vlucas/phpdotenv": "^5.4.1"
+        "vlucas/phpdotenv": "^5.4.1",
+        "symfony/yaml": "^5.4"
     },
     "license": "MIT",
     "autoload": {

@@ -1,5 +1,6 @@
 <?php
 namespace Devmount\TeleSend;
+use Symfony\Component\Yaml\Yaml;
 
 require_once 'vendor/autoload.php';
 require_once 'src/form.php';
@@ -12,7 +13,7 @@ $dotenv->load();
 $token = $_ENV['TOKEN']; // telegram bot token
 $chat  = $_ENV['CHAT'];  // telegram chat id to post to
 $url   = 'https://api.telegram.org/bot' . $token . '/sendMessage';
-$conf  = json_decode(file_get_contents('config.json'), true);
+$conf  = Yaml::parseFile('config.yml');
 
 // init form and render it
 $ts = new TeleForm($token, $chat, $url, $conf);
