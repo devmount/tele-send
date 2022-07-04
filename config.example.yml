@@ -5,7 +5,7 @@ title: Title
 subtitle: Subtitle
 # label for the submit button
 submit: Submit
-# all needed form fields
+# now configure as many form fields as you like
 # supported types are: rating, text, textarea (see following examples)
 # type and title are mandatory for every field
 fields:

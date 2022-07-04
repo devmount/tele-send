@@ -13,6 +13,7 @@ A simple web app to send data from a web form as chat message by a Telegram bot.
 2. Install dependencies
 
     ```bash
+    cd tele-send
     composer install
     ```
 
@@ -27,8 +28,8 @@ A simple web app to send data from a web form as chat message by a Telegram bot.
 5. Rename example configuration file
 
     ```bash
-    mv config.example.json config.json
+    mv config.example.yml config.yml
     ```
 
-6. Modify configuration to your needs, all possible values are documented in the `config.example.json` file
+6. Modify configuration to your needs, all possible values are documented in the `config.example.yml` file
 7. Serve files by a web server

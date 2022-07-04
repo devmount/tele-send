@@ -1,6 +1,5 @@
 <?php
 namespace TeleSend\Form;
-use TeleSend\Form\Elements;
 
 class Form
 {
