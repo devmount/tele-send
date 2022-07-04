@@ -1,9 +1,7 @@
 <?php
-namespace Devmount\TeleSend;
-use Symfony\Component\Yaml\Yaml;
-
 require_once 'vendor/autoload.php';
-require_once 'src/form.php';
+use Symfony\Component\Yaml\Yaml;
+use TeleSend\Form\Form;
 
 // get environment variables
 $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
@@ -16,5 +14,5 @@ $url   = 'https://api.telegram.org/bot' . $token . '/sendMessage';
 $conf  = Yaml::parseFile('config.yml');
 
 // init form and render it
-$ts = new TeleForm($token, $chat, $url, $conf);
+$ts = new Form($token, $chat, $url, $conf);
 $ts->render();

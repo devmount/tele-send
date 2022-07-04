@@ -1,9 +1,8 @@
 <?php
-namespace Devmount\TeleSend;
+namespace TeleSend\Form;
+use TeleSend\Form\Elements;
 
-require_once 'elements.php';
-
-class TeleForm
+class Form
 {
 	protected
 		$token = '',
@@ -59,14 +58,14 @@ class TeleForm
 		foreach ($this->conf['fields'] as $f) {
 			switch ($f['type']) {
 				case 'rating':
-					$fieldMarkup .= TeleFormElements::rating($f);
+					$fieldMarkup .= Elements::rating($f);
 					break;
 				case 'textarea':
-					$fieldMarkup .= TeleFormElements::textarea($f);
+					$fieldMarkup .= Elements::textarea($f);
 					break;
 				case 'text':
 				default:
-					$fieldMarkup .= TeleFormElements::text($f);
+					$fieldMarkup .= Elements::text($f);
 					break;
 			}
 		}

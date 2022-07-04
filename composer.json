@@ -9,7 +9,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Devmount\\TeleSend\\": "src/"
+            "TeleSend\\": "src/"
         }
     },
     "authors": [

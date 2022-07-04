@@ -1,7 +1,7 @@
 <?php
-namespace Devmount\TeleSend;
+namespace TeleSend\Form;
 
-class TeleFormElements
+class Elements
 {
 	/**
 	 * generate rating field markup
